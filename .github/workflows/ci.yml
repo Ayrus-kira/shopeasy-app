@@ -60,5 +60,9 @@ jobs:
           git config user.email "ci@shopeasy.com"
           git config user.name "CI Bot"
           git add shopeasy/values.yaml
-          git commit -m "ci: update image tag"
-          git push
+          if git diff --cached --quiet; then
+            echo "No Helm changes to commit"
+          else
+            git commit -m "ci: update image tag"
+            git push
+          fi
