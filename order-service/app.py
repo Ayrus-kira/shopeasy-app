@@ -1,12 +1,11 @@
-from prometheus_flask_exporter import PrometheusMetrics
-
-app = Flask(__name__)
-metrics = PrometheusMetrics(app)
 from flask import Flask, jsonify, request
+from prometheus_flask_exporter import PrometheusMetrics
 import uuid
 from datetime import datetime
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
+
 orders = []
 
 @app.route('/health')
